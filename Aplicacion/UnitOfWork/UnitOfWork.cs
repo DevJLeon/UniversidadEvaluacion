@@ -4,46 +4,94 @@ using Dominio.Interfaces;
 using Persistencia;
 
 namespace Aplicacion.UnitOfWork;
-public class UnitOfWork  : IUnitOfWork, IDisposable
+
+public class UnitOfWork : IUnitOfWork, IDisposable
 {
-    private readonly ApiContext _context;
+    private readonly ApiContext context;
 
-    private RolRepository _Rol;
-    private UsuarioRepository _usuarios;
+    private CursoEscolarRepository _cursoEscolar;
+    private AsignaturaRepository _asignatura;
+    private GradoRepository _grado;
+    private PersonaRepository _persona;
+    private DepartamentoRepository _departamento;
 
-    public UnitOfWork(ApiContext context)
+    public UnitOfWork(ApiContext _context)
     {
-        _context = context;
+        context = _context;
     }
     
-    public IRol Roles
+
+    public IAsignatura Asignaturas
     {
-        get{
-            if(_Rol== null)
+        get
+        {
+            if (_asignatura == null)
             {
-                _Rol= new RolRepository(_context);
+                _asignatura = new AsignaturaRepository(context);
             }
-            return _Rol;
-        }
-    }
-    
-    public IUsuario Usuarios
-    {
-        get{
-            if(_usuarios== null)
-            {
-                _usuarios= new UsuarioRepository(_context);
-            }
-            return _usuarios;
+            return _asignatura;
         }
     }
 
+    public ICursoEscolar CursoEscolares
+    {
+        get
+        {
+            if (_cursoEscolar == null)
+            {
+                _cursoEscolar = new CursoEscolarRepository(context);
+            }
+            return _cursoEscolar;
+        }
+    }
+
+    public IGrado Grados
+    {
+        get
+        {
+            if (_grado == null)
+            {
+                _grado = new GradoRepository(context);
+            }
+            return _grado;
+        }
+    }
+
+    public IDepartamento Departamentos
+    {
+        get
+        {
+            if (_departamento == null)
+            {
+                _departamento = new DepartamentoRepository(context);
+            }
+            return _departamento;
+        }
+    }
+
+    public IPersona Personas
+    {
+        get
+        {
+            if (_persona == null)
+            {
+                _persona = new PersonaRepository(context);
+            }
+            return _persona;
+        }
+    }
+
+
+    public int Save()
+    {
+        return context.SaveChanges();
+    }
     public void Dispose()
     {
-        _context.Dispose();
+        context.Dispose();
     }
     public async Task<int> SaveAsync()
     {
-        return await _context.SaveChangesAsync();
+        return await context.SaveChangesAsync();
     }
 }

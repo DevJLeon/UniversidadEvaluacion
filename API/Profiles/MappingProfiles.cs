@@ -7,7 +7,11 @@ public class MappingProfiles : Profile
 {
     public MappingProfiles()
     {
-        CreateMap<Rol,RolDto>().ReverseMap();
-        CreateMap<Usuario,UsuarioDto>().ReverseMap();
+        CreateMap<Asignatura,AsignaturaDto>().ReverseMap();
+        CreateMap<CursoEscolar,CursoEscolarDto>().ReverseMap();
+        CreateMap<Grado,GradoDto>().ReverseMap();
+        CreateMap<Persona,PersonaDto>().ReverseMap();
+        CreateMap<Departamento,DepartamentoDto>().ReverseMap();
+
     }
 }

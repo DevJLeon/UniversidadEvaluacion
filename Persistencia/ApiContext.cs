@@ -7,10 +7,15 @@ public class ApiContext : DbContext
 {
     public ApiContext(DbContextOptions options) : base(options)
     { }
-    
-    public DbSet<Rol> Roles { get; set; }
-    public DbSet<RolUsuario> RolUsuarios { get; set; }
-    public DbSet<Usuario> Usuarios { get; set; }
+
+    public DbSet<Asignatura> Asignaturas { get; set; }
+    public DbSet<Persona> Personas { get; set; }
+    public DbSet<Grado> Grados { get; set; }
+    public DbSet<Profesor> Profesores { get; set; }
+    public DbSet<Departamento> Departamentos { get; set; }
+    public DbSet<CursoEscolar> CursoEscolares { get; set; }
+    public DbSet<AlumnoMatriculaAsignatura> AlumnoMatriculaAsignaturas { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

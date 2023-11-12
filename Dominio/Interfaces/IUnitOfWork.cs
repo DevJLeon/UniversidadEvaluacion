@@ -1,9 +1,11 @@
 namespace Dominio.Interfaces;
 public interface IUnitOfWork
 {
-    IRol Roles { get; }
-    IUsuario Usuarios { get; }
-    
-
+    IAsignatura Asignaturas{get;}
+    ICursoEscolar CursoEscolares{get;}
+    IGrado Grados{get;}
+    IDepartamento Departamentos{get;}
+    IPersona Personas{get;}
     Task<int> SaveAsync();
+
 }
