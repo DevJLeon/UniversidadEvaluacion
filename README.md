@@ -180,5 +180,5 @@
 31. Devuelve un listado con todos los departamentos que no han impartido asignaturas en ningún curso escolar.
 
      ```sql
-       #http://localhost:5272/api/departamento/consulta16
+       #http://localhost:5272/api/departamento/consulta31
      ```
